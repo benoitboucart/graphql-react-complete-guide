@@ -6,6 +6,7 @@ import { LIST_TYPE } from 'graphql/language/kinds';
 const GET_SONGS = gql`
  query {
    songs {
+     id
      title
    }
  }
@@ -14,7 +15,7 @@ const GET_SONGS = gql`
 class SongList extends Component {
   renderSongs = songs => {
     return songs.map(song => {
-      return <li key={song.id}>{song.title}</li>
+      return <li key={song.id} className="collection-item">{song.title}</li>
     })
   }
 
@@ -26,7 +27,7 @@ class SongList extends Component {
           if (error) return <div>Error :(</div>;
 
           return (
-            <ul>
+            <ul className="collection">
               { this.renderSongs(data.songs) }
             </ul>
           )
