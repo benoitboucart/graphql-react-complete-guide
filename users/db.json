@@ -1,0 +1,11 @@
+{
+  "users": [
+    { "id": "23", "firstName": "Bill", "lastName": "Boucart", "age": 30, "companyId": "1" },
+    { "id": "40", "firstName": "Laura", "lastName": "Vanpuyenbrouck", "age": 45, "companyId": "2" },
+    { "id": "41", "firstName": "Jacky", "lastName": "Mathijsen", "age": 22, "companyId": "2" }
+  ],
+  "companies": [
+    { "id": "1", "name": "Howest", "description": "Hogeschool West-Vlaanderen" },
+    { "id": "2", "name": "UGent", "description": "Universiteit Gent" }
+  ]
+}

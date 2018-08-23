@@ -1,16 +1,13 @@
 const graphql = require('graphql');
-const _ = require('loadash');
+//const axios = require('axios');
+const fetch = require('node-fetch');
 
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt
+  GraphQLInt,
+  GraphQLSchema
 } = graphql;
-
-const users = [
-  { id: `23`, firstName: `Benoît`, lastName: `Boucart`, age: 26 },
-  { id: `47`, firstName: `Maxime`, lastName: `Boucart`, age: 29 }
-];
 
 const UserType = new GraphQLObjectType({
   name: `User`,
@@ -25,13 +22,19 @@ const UserType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: `RootQueryType`,
   fields: {
+    // GraphQL: { user(id: "23") { id, firstName } }
     user: {
       type: UserType,
       args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
         // Here we're going to DBB and find data we're looking for
-        return _.find(users, { id: args.id });
+        return fetch(`http://localhost:3000/users/${args.id}`).then(resp => resp.json());
+        // return axios(`http://localhost:3000/users/${args.id}`).then(resp => resp.data);
       }
     }
   }
+});
+
+module.exports = new GraphQLSchema({
+  query: RootQuery
 });
