@@ -1,11 +1,49 @@
 {
   "users": [
-    { "id": "23", "firstName": "Bill", "lastName": "Boucart", "age": 30, "companyId": "1" },
-    { "id": "40", "firstName": "Laura", "lastName": "Vanpuyenbrouck", "age": 45, "companyId": "2" },
-    { "id": "41", "firstName": "Jacky", "lastName": "Mathijsen", "age": 22, "companyId": "2" }
+    {
+      "id": "23",
+      "firstName": "Bill",
+      "age": 30,
+      "companyId": "1"
+    },
+    {
+      "id": "40",
+      "firstName": "Laura",
+      "age": 45,
+      "companyId": "2"
+    },
+    {
+      "id": "41",
+      "firstName": "Jacky",
+      "age": 22,
+      "companyId": "2"
+    },
+    {
+      "firstName": "Steven",
+      "age": 26,
+      "id": "_wSTg_m"
+    },
+    {
+      "firstName": "Stéphanie",
+      "age": 26,
+      "id": "EATWU_r"
+    },
+    {
+      "firstName": "Jean-René",
+      "age": 26,
+      "id": "EEkkUbU"
+    }
   ],
   "companies": [
-    { "id": "1", "name": "Howest", "description": "Hogeschool West-Vlaanderen" },
-    { "id": "2", "name": "UGent", "description": "Universiteit Gent" }
+    {
+      "id": "1",
+      "name": "Howest",
+      "description": "Hogeschool West-Vlaanderen"
+    },
+    {
+      "id": "2",
+      "name": "UGent",
+      "description": "Universiteit Gent"
+    }
   ]
 }
