@@ -14,7 +14,7 @@ const CompanyType = new GraphQLObjectType({
   fields: {
     id: { type: GraphQLString },
     name: { type: GraphQLString },
-    description: { type: GraphQLString }
+    description: { type: GraphQLString },
   }
 });
 
@@ -24,7 +24,13 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLString },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
-    age: { type: GraphQLInt }
+    age: { type: GraphQLInt },
+    company: {
+      type: CompanyType,
+      resolve(parentValue, args) {
+        return fetch(`http://localhost:3000/companies/${parentValue.companyId}`).then(resp => resp.json());
+      }
+    }
   }
 });
 
