@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { LIST_TYPE } from 'graphql/language/kinds';
 
 const GET_SONGS = gql`
  query {
@@ -11,6 +12,12 @@ const GET_SONGS = gql`
 `;
 
 class SongList extends Component {
+  renderSongs = songs => {
+    return songs.map(song => {
+      return <li key={song.id}>{song.title}</li>
+    })
+  }
+
   render = () => {
     return (
       <Query query={GET_SONGS}>
@@ -19,12 +26,9 @@ class SongList extends Component {
           if (error) return <div>Error :(</div>;
 
           return (
-            <div>
-              { data.songs.map((song) => {
-                return <p key={song.id}>song</p>
-              }) }
-              {console.log(data)}
-            </div>
+            <ul>
+              { this.renderSongs(data.songs) }
+            </ul>
           )
         }}
       </Query>
