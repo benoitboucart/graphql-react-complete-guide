@@ -1,17 +1,39 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
-import { GET_SONGS } from '../queries/fetchSongs';
-// import { PropTypes } from 'prop-types';
+import { Mutation } from 'react-apollo';
+import { GET_SONGS, DELETE_SONG } from '../queries/songs';
 
 class SongList extends Component {
-  // static propTypes = {
-  //   history: PropTypes.object.isRequired
-  // };
+  onSongDelete = (e, deleteSong, id) => {
+    e.preventDefault();
+    deleteSong({
+      variables: { id },
+      refetchQueries: [{ query: GET_SONGS }]
+    }).then(() => {
+      this.props.history.push(`/`);
+    });
+  };
 
   renderSongs = songs => {
     return songs.map(song => {
-      return <li key={song.id} className="collection-item">{song.title}</li>
+      return (
+        <li key={song.id} className="collection-item">
+          {song.title}
+
+          <Mutation mutation={DELETE_SONG}>
+            {(deleteSong, { data }) => (
+              <i
+                className="material-icons"
+                onClick={e => this.onSongDelete(e, deleteSong, song.id)}
+              >
+                delete
+              </i>
+          )}
+
+          </Mutation>
+        </li>
+      );
     })
   }
 
@@ -30,7 +52,6 @@ class SongList extends Component {
               <Link to="/songs/new" className="btn-floating btn-large red right">
                 <i className="material-icons">add</i>
               </Link>
-              {/* <a onClick={() => { this.props.history.push(`/songs/new`) }}>Create</a> */}
             </div>
           )
         }}

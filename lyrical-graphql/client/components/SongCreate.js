@@ -3,16 +3,8 @@ import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
 import { PropTypes } from 'prop-types';
-import { GET_SONGS } from '../queries/fetchSongs';
+import { ADD_SONG, GET_SONGS } from '../queries/songs';
 
-const ADD_SONG = gql`
-  mutation AddSong($title: String!) {
-    addSong(title: $title){
-      id,
-      title
-    }
-  }
-`;
 
 class SongCreate extends Component {
   static propTypes = {
