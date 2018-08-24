@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
 import { PropTypes } from 'prop-types';
+import { GET_SONGS } from '../queries/fetchSongs';
 
 const ADD_SONG = gql`
   mutation AddSong($title: String!) {
@@ -33,7 +34,10 @@ class SongCreate extends Component {
             <form
               onSubmit={e => {
                 e.preventDefault();
-                addSong({ variables: { title: this.input.value } }).then(() => {
+                addSong({
+                  variables: { title: this.input.value },
+                  refetchQueries: [{ query: GET_SONGS }]
+                }).then(() => {
                   this.input.value = "";
                   this.props.history.push(`/`);
                 });

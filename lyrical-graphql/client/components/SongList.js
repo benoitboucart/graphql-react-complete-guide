@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+import { GET_SONGS } from '../queries/fetchSongs';
 // import { PropTypes } from 'prop-types';
-
-const GET_SONGS = gql`
- query {
-   songs {
-     id
-     title
-   }
- }
-`;
 
 class SongList extends Component {
   // static propTypes = {

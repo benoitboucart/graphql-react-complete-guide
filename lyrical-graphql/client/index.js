@@ -16,7 +16,7 @@ const client = new ApolloClient();
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter forceRefresh={true}>
+      <BrowserRouter>{ /*forceRefresh={true}*/ }
         <App>
           <Switch>
             <Route exact path='/' component={SongList} />
