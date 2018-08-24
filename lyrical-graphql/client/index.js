@@ -16,11 +16,11 @@ const client = new ApolloClient();
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <BrowserRouter forceRefresh={true}>
         <App>
           <Switch>
             <Route exact path='/' component={SongList} />
-            <Route path='/song/new' component={SongCreate} />
+            <Route path='/songs/new' component={SongCreate} />
             <Route component={NotFound} />
           </Switch>
         </App>

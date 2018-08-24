@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
+import { PropTypes } from 'prop-types';
 
 const ADD_SONG = gql`
   mutation AddSong($title: String!) {
@@ -12,6 +14,9 @@ const ADD_SONG = gql`
 `;
 
 class SongCreate extends Component {
+  static propTypes = {
+    history: PropTypes.object.isRequired
+  };
   // state = {
   //   title: ``
   // };
@@ -21,12 +26,17 @@ class SongCreate extends Component {
       <Mutation mutation={ADD_SONG}>
         {(addSong, { data }) => (
           <div>
+            <Link to="/">
+              Back
+            </Link>
             <h3>Create a new song</h3>
             <form
               onSubmit={e => {
                 e.preventDefault();
-                addSong({ variables: { title: this.input.value } });
-                this.input.value = "";
+                addSong({ variables: { title: this.input.value } }).then(() => {
+                  this.input.value = "";
+                  this.props.history.push(`/`);
+                });
               }}
             >
               <input

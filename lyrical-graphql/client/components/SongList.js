@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
-import { PropTypes } from 'prop-types';
+// import { PropTypes } from 'prop-types';
 
 const GET_SONGS = gql`
  query {
@@ -13,9 +14,9 @@ const GET_SONGS = gql`
 `;
 
 class SongList extends Component {
-  static propTypes = {
-    history: PropTypes.object.isRequired
-  };
+  // static propTypes = {
+  //   history: PropTypes.object.isRequired
+  // };
 
   renderSongs = songs => {
     return songs.map(song => {
@@ -35,7 +36,10 @@ class SongList extends Component {
               <ul className="collection">
                 { this.renderSongs(data.songs) }
               </ul>
-              <a onClick={() => { this.props.history.push(`/song/new`) }}>Create</a>
+              <Link to="/songs/new" className="btn-floating btn-large red right">
+                <i className="material-icons">add</i>
+              </Link>
+              {/* <a onClick={() => { this.props.history.push(`/songs/new`) }}>Create</a> */}
             </div>
           )
         }}
