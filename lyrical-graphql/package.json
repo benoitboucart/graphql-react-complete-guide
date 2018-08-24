@@ -9,7 +9,7 @@
   },
   "scripts": {
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon ./server/server.js",
+    "server": "nodemon ./server/server.js --ignore client",
     "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "author": "",
