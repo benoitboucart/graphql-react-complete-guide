@@ -18,7 +18,6 @@ class SongCreate extends Component {
 
   render = () => {
     return (
-
       <Mutation mutation={ADD_SONG}>
         {(addSong, { data }) => (
           <div>
@@ -39,7 +38,6 @@ class SongCreate extends Component {
             </form>
           </div>
         )}
-
         {/* <div>
           <form onSubmit={this.onSubmit}>
             <label>Song title</label>
