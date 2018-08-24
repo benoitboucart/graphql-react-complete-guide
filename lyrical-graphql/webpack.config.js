@@ -4,6 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './client/index.js',
+  devServer: {
+    port: 8080,
+    open: true,
+    historyApiFallback: true
+    // proxy: {
+    //   "/api": "http://localhost:8080"
+    // }
+  },
   output: {
     path: '/',
     filename: 'bundle.js'

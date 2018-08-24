@@ -3,6 +3,7 @@ const models = require('./models');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
 const schema = require('./schema/schema');
 
 const app = express();
@@ -24,9 +25,23 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
+// const webpackMiddleware = require('webpack-dev-middleware');
+// const webpack = require('webpack');
+// const webpackConfig = require('../webpack.config.js');
+// app.use(
+//   webpackMiddleware(webpack(webpackConfig), {
+//   })
+// );
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../client/index.html'), function (err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// });
+
+app.listen(4000, () => {
+  console.log('Listening');
+});
 
 module.exports = app;

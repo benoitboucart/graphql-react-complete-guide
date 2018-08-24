@@ -35,7 +35,7 @@ class SongList extends Component {
               <ul className="collection">
                 { this.renderSongs(data.songs) }
               </ul>
-              <a onClick={() => { this.props.history.push(`/song/create`) }}>Create</a>
+              <a onClick={() => { this.props.history.push(`/song/new`) }}>Create</a>
             </div>
           )
         }}
