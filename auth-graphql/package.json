@@ -8,7 +8,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js --ignore client"
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "server": "nodemon ./server/server.js --ignore client",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "author": "",
   "license": "ISC",
