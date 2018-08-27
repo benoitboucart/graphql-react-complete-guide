@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import { GET_SONG } from '../queries/songs';
 
 import LyricCreate from './LyricCreate';
+import LyricList from './LyricList';
 
 class SongDetail extends Component {
   static propTypes = {
@@ -28,13 +29,7 @@ class SongDetail extends Component {
             return (
               <div>
                 <h3>{song.title}</h3>
-                <ul className="collection">
-                  {song.lyrics.map(lyric => (
-                    <li key={lyric.id} className="collection-item">
-                      {lyric.content}
-                    </li>
-                  ))}
-                </ul>
+                <LyricList lyrics={song.lyrics}/>
                 <LyricCreate
                   songId={this.props.match.params.id}
                 />
