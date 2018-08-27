@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { GET_SONG } from '../queries/songs';
 
+import LyricCreate from './LyricCreate';
+
 class SongDetail extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired
+  };
+
   render = () => {
     return (
       <div>
@@ -19,7 +26,19 @@ class SongDetail extends Component {
             if (error) return <div>Error :(</div>;
 
             return (
-              <h3>{song.title}</h3>
+              <div>
+                <h3>{song.title}</h3>
+                <ul className="collection">
+                  {song.lyrics.map(lyric => (
+                    <li key={lyric.id} className="collection-item">
+                      {lyric.content}
+                    </li>
+                  ))}
+                </ul>
+                <LyricCreate
+                  songId={this.props.match.params.id}
+                />
+              </div>
             )
           }}
         </Query>

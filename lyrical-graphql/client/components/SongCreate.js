@@ -7,6 +7,7 @@ import { ADD_SONG, GET_SONGS } from '../queries/songs';
 
 class SongCreate extends Component {
   static propTypes = {
+    match: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
   };
   // state = {
