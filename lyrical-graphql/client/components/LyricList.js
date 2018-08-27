@@ -6,29 +6,38 @@ import { LIKE_LYRIC } from '../queries/lyrics';
 
 class LyricList extends Component {
 
-  onLike = (e, id, likeLyric) => {
+  onLike = (e, lyric, likeLyric) => {
     e.preventDefault();
-
-    likeLyric({ variables: { id } }).then(() => {
+    likeLyric({
+      variables: { id: lyric.id },
+      optimisticResponse: {
+        __typename: `Mutation`,
+        likeLyric: {
+          id: lyric.id,
+          __typename: `LyricType`,
+          likes: lyric.likes + 1,
+        }
+      }
+    }).then(() => {
     });
   };
 
   renderLyrics = () => {
     return (
-      this.props.lyrics.map(({ id, content, likes }) => (
-        <li key={id} className="collection-item">
-          {content}
+      this.props.lyrics.map(lyric => (
+        <li key={lyric.id} className="collection-item">
+          {lyric.content}
 
           <Mutation mutation={LIKE_LYRIC}>
             {(likeLyric, { data }) => (
               <div className="vote-box">
                 <i
-                  onClick={e => this.onLike(e, id, likeLyric)}
+                  onClick={e => this.onLike(e, lyric, likeLyric)}
                   className="material-icons"
                 >
                   thumb_up
                 </i>
-                { likes }
+                { lyric.likes }
               </div>
             )}
           </Mutation>
