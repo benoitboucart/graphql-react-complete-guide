@@ -18,7 +18,9 @@ class SongList extends Component {
     return songs.map(song => {
       return (
         <li key={song.id} className="collection-item">
-          {song.title}
+          <Link to={`/songs/${song.id}`}>
+            {song.title}
+          </Link>
 
           <Mutation mutation={DELETE_SONG}>
             {(deleteSong, { data }) => (
@@ -29,7 +31,6 @@ class SongList extends Component {
                 delete
               </i>
           )}
-
           </Mutation>
         </li>
       );
