@@ -27,7 +27,8 @@ class LyricCreate extends Component {
                     content: this.input.value,
                     songId: this.props.songId
                   },
-                  refetchQueries: [{ query: GET_SONG, variables: { id: this.props.songId } }]
+                  // No refetchQueries needed as the addLyricToSong function returns also updated lyrics
+                  //refetchQueries: [{ query: GET_SONG, variables: { id: this.props.songId } }]
                 }).then(() => {
                   this.input.value = "";
                 });
