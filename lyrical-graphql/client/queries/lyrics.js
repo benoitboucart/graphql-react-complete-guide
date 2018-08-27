@@ -11,3 +11,12 @@ export const ADD_LYRIC_TO_SONG = gql`
     }
   }
 `;
+
+export const LIKE_LYRIC = gql`
+  mutation LikeLyric($id: ID) {
+    likeLyric(id: $id) {
+      id
+      likes
+    }
+  }
+`;
