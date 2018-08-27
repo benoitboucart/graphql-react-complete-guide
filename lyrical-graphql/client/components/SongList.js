@@ -11,7 +11,6 @@ class SongList extends Component {
       variables: { id },
       refetchQueries: [{ query: GET_SONGS }]
     }).then(() => {
-      this.props.history.push(`/`);
     });
   };
 

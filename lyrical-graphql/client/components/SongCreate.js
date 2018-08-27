@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
 import { PropTypes } from 'prop-types';
 import { ADD_SONG, GET_SONGS } from '../queries/songs';
