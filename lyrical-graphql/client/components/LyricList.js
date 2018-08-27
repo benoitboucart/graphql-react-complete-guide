@@ -19,10 +19,9 @@ class LyricList extends Component {
         <li key={id} className="collection-item">
           {content}
 
-
           <Mutation mutation={LIKE_LYRIC}>
             {(likeLyric, { data }) => (
-              <div>
+              <div className="vote-box">
                 <i
                   onClick={e => this.onLike(e, id, likeLyric)}
                   className="material-icons"
